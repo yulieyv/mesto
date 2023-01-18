@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="description"
+      content="Одностраничный сайт с возможностью добавления картинок и редактирования профиля в рамках курса Веб-разработчик от Яндекс Практикума"
+    >
+    <meta name="keywords" content="Картинки, профиль">
+    <meta name="author" content="Ямалиева Юлия">
+    <link rel="stylesheet" href="./pages/index.css">
+    <title>Mesto Russia</title>
+  </head>
+
+  <body class="page">
+    <header class="header">
+      <img
+        class="header__logo"
+        src="./images/header-logo.svg"
+        alt="Логотип с надписью Место"
+      >
+    </header>
+    <main class="content">
+      <section class="profile">
+        <!--Секция, блок profile -->
+        <div class="profile__container">
+          <img
+            src="./images/photo-profile.jpg"
+            alt="Фото профиля"
+            class="profile__image"
+          >
+          <div class="profile__info">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button
+              class="profile__edit-button"
+              type="button"
+              title="Редактировать профиль"
+            ></button>
+            <p class="profile__job">Исследователь океана</p>
+          </div>
+        </div>
+        <button
+          class="profile__add-button"
+          type="button"
+          title="Добавить карточку"
+        ></button>
+      </section>
+
+      <section class="elements">
+        <!--Секция, блок elements -->
+        <ul class="elements__list">
+          <li class="element">
+            <img
+              src="./images/architecture.jpg"
+              alt="Архитектурное сооружение"
+              class="element__image"
+            >
+            <div class="element__sign">
+              <h2 class="element__title">Архитектура</h2>
+              <button
+                class="element__like-button"
+                type="button"
+                title="Поставить лайк"
+              ></button>
+            </div>
+          </li>
+          <li class="element">
+            <img
+              src="./images/fashion.jpg"
+              alt="Девушка в темных очках и красной пушистой шубе"
+              class="element__image"
+            >
+            <div class="element__sign">
+              <h2 class="element__title">Стильно, модно</h2>
+              <button
+                class="element__like-button"
+                type="button"
+                title="Поставить лайк"
+              ></button>
+            </div>
+          </li>
+          <li class="element">
+            <img
+              src="./images/night-city.jpg"
+              alt="Фото ночного города"
+              class="element__image"
+            >
+            <div class="element__sign">
+              <h2 class="element__title">Огни ночного города</h2>
+              <button
+                class="element__like-button"
+                type="button"
+                title="Поставить лайк"
+              ></button>
+            </div>
+          </li>
+          <li class="element">
+            <img
+              src="./images/pelicans.jpg"
+              alt="Фото двух пеликанов"
+              class="element__image"
+            >
+            <div class="element__sign">
+              <h2 class="element__title">Пеликаны</h2>
+              <button
+                class="element__like-button"
+                type="button"
+                title="Поставить лайк"
+              ></button>
+            </div>
+          </li>
+          <li class="element">
+            <img
+              src="./images/winter-patterns.jpg"
+              alt="Зимние узоры на окне"
+              class="element__image"
+            >
+            <div class="element__sign">
+              <h2 class="element__title">Зимние узоры</h2>
+              <button
+                class="element__like-button"
+                type="button"
+                title="Поставить лайк"
+              ></button>
+            </div>
+          </li>
+          <li class="element">
+            <img
+              src="./images/you-got-licked.jpg"
+              alt="Фото кота, облизывающего стеклянную столешницу, снизу"
+              class="element__image"
+            >
+            <div class="element__sign">
+              <h2 class="element__title">Вас лизнули</h2>
+              <button
+                class="element__like-button"
+                type="button"
+                title="Поставить лайк"
+              ></button>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <footer class="footer">
+        <!--Подвал сайта, блок footer -->
+        <p class="footer__copyright">&copy;2023 Mesto Russia</p>
+      </footer>
+
+      <section class="popup">
+        <!--Секция, блок popup -->
+        <div class="popup__form">
+          <button
+            class="popup__close-button button"
+            type="button"
+            title="Закрыть окно"
+          ></button>
+          <form
+            name="popupContainer"
+            class="popup__container"
+            method="post"
+            action="action"
+          >
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <label class="popup__label" for="inputName">
+              <input
+                class="popup__input popup__input_name"
+                id="inputName"
+                type="text"
+                name="name"
+                placeholder="Жак-Ив Кусто"
+              >
+            </label>
+            <label class="popup__label" for="inputJob">
+              <input
+                class="popup__input popup__input_job"
+                id="inputJob"
+                type="text"
+                name="job"
+                placeholder="Исследователь океана"
+              >
+            </label>
+            <button
+              class="popup__submit-button"
+              type="submit"
+              title="Сохранить изменения"
+            >
+              Сохранить
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <script src="./pages/index.js"></script>
+  </body>
+</html>
