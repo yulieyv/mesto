@@ -5,6 +5,10 @@
   border-radius: 2px;
   box-shadow: none;
   padding: 14px 125px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-width: 0;
 
   font-family: 'Inter', Arial, Helvetica, sans-serif;
   font-style: normal;

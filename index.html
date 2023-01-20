@@ -145,12 +145,12 @@
 
       <footer class="footer">
         <!--Подвал сайта, блок footer -->
-        <p class="footer__copyright">&copy;2023 Mesto Russia</p>
+        <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
       </footer>
 
-      <section class="popup">
+      <div class="popup">
         <!--Секция, блок popup -->
-        <div class="popup__form">
+        <div class="popup__container">
           <button
             class="popup__close-button button"
             type="button"
@@ -158,29 +158,25 @@
           ></button>
           <form
             name="popupContainer"
-            class="popup__container"
+            class="popup__form"
             method="post"
             action="action"
           >
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <label class="popup__label" for="inputName">
-              <input
-                class="popup__input popup__input_name"
-                id="inputName"
-                type="text"
-                name="name"
-                placeholder="Жак-Ив Кусто"
-              >
-            </label>
-            <label class="popup__label" for="inputJob">
-              <input
-                class="popup__input popup__input_job"
-                id="inputJob"
-                type="text"
-                name="job"
-                placeholder="Исследователь океана"
-              >
-            </label>
+            <p class="popup__title">Редактировать профиль</p>
+            <input
+              class="popup__input popup__input_name"
+              id="inputName"
+              type="text"
+              name="name"
+              placeholder="Жак-Ив Кусто"
+            >
+           <input
+              class="popup__input popup__input_job"
+              id="inputJob"
+              type="text"
+              name="job"
+              placeholder="Исследователь океана"
+            >
             <button
               class="popup__submit-button"
               type="submit"
@@ -190,8 +186,8 @@
             </button>
           </form>
         </div>
-      </section>
+      </div>
     </main>
-    <script src="./pages/index.js"></script>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>

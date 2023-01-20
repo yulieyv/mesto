@@ -4,9 +4,10 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 1.22;
-  color: #FFFFFF;
+  color: #fff;
   grid-column: 1 / span 2;
   margin: 0;
+  
   
   text-overflow: ellipsis;
   white-space: nowrap;
