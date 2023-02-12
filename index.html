@@ -1,193 +1,172 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang='ru'>
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset='UTF-8' >
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' >
     <meta
-      name="description"
-      content="Одностраничный сайт с возможностью добавления картинок и редактирования профиля в рамках курса Веб-разработчик от Яндекс Практикума"
+      name='description'
+      content='Одностраничный сайт с возможностью добавления картинок и редактирования профиля в рамках курса Веб-разработчик от Яндекс Практикума'
     >
-    <meta name="keywords" content="Картинки, профиль">
-    <meta name="author" content="Ямалиева Юлия">
-    <link rel="stylesheet" href="./pages/index.css">
+    <meta name='keywords' content='Картинки, профиль' >
+    <meta name='author' content='Ямалиева Юлия' >
+    <link rel='stylesheet' href='./pages/index.css' >
     <title>Mesto Russia</title>
   </head>
 
-  <body class="page">
-    <header class="header">
+  <body class='page'>
+    <!--Header-->
+    <header class='header'>
       <img
-        class="header__logo"
-        src="./images/header-logo.svg"
-        alt="Логотип с надписью Место"
+        class='header__logo'
+        src='./images/header-logo.svg'
+        alt='Логотип с надписью Место'
       >
     </header>
-    <main class="content">
-      <section class="profile">
+    <main class='content'>
+      <section class='profile'>
         <!--Секция, блок profile -->
-        <div class="profile__container">
+        <div class='profile__container'>
           <img
-            src="./images/photo-profile.jpg"
-            alt="Фото профиля"
-            class="profile__image"
+            src='./images/photo-profile.jpg'
+            alt='Фото профиля'
+            class='profile__image'
           >
-          <div class="profile__info">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <div class='profile__info'>
+            <h1 class='profile__name'>Жак-Ив Кусто</h1>
             <button
-              class="profile__edit-button"
-              type="button"
-              title="Редактировать профиль"
+              class='profile__edit-button'
+              type='button'
+              title='Редактировать профиль'
             ></button>
-            <p class="profile__job">Исследователь океана</p>
+            <p class='profile__job'>Исследователь океана</p>
           </div>
         </div>
         <button
-          class="profile__add-button"
-          type="button"
-          title="Добавить карточку"
+          class='profile__add-button'
+          type='button'
+          title='Добавить карточку'
         ></button>
       </section>
 
-      <section class="elements">
-        <!--Секция, блок elements -->
-        <ul class="elements__list">
-          <li class="element">
-            <img
-              src="./images/architecture.jpg"
-              alt="Архитектурное сооружение"
-              class="element__image"
-            >
-            <div class="element__sign">
-              <h2 class="element__title">Архитектура</h2>
-              <button
-                class="element__like-button"
-                type="button"
-                title="Поставить лайк"
-              ></button>
-            </div>
-          </li>
-          <li class="element">
-            <img
-              src="./images/fashion.jpg"
-              alt="Девушка в темных очках и красной пушистой шубе"
-              class="element__image"
-            >
-            <div class="element__sign">
-              <h2 class="element__title">Стильно, модно</h2>
-              <button
-                class="element__like-button"
-                type="button"
-                title="Поставить лайк"
-              ></button>
-            </div>
-          </li>
-          <li class="element">
-            <img
-              src="./images/night-city.jpg"
-              alt="Фото ночного города"
-              class="element__image"
-            >
-            <div class="element__sign">
-              <h2 class="element__title">Огни ночного города</h2>
-              <button
-                class="element__like-button"
-                type="button"
-                title="Поставить лайк"
-              ></button>
-            </div>
-          </li>
-          <li class="element">
-            <img
-              src="./images/pelicans.jpg"
-              alt="Фото двух пеликанов"
-              class="element__image"
-            >
-            <div class="element__sign">
-              <h2 class="element__title">Пеликаны</h2>
-              <button
-                class="element__like-button"
-                type="button"
-                title="Поставить лайк"
-              ></button>
-            </div>
-          </li>
-          <li class="element">
-            <img
-              src="./images/winter-patterns.jpg"
-              alt="Зимние узоры на окне"
-              class="element__image"
-            >
-            <div class="element__sign">
-              <h2 class="element__title">Зимние узоры</h2>
-              <button
-                class="element__like-button"
-                type="button"
-                title="Поставить лайк"
-              ></button>
-            </div>
-          </li>
-          <li class="element">
-            <img
-              src="./images/you-got-licked.jpg"
-              alt="Фото кота, облизывающего стеклянную столешницу, снизу"
-              class="element__image"
-            >
-            <div class="element__sign">
-              <h2 class="element__title">Вас лизнули</h2>
-              <button
-                class="element__like-button"
-                type="button"
-                title="Поставить лайк"
-              ></button>
-            </div>
-          </li>
-        </ul>
+      <section class='elements'>
+        <!--Секция, блок с карточками -->
+        <ul class='elements__list'></ul>
       </section>
 
-      <footer class="footer">
+      <footer class='footer'>
         <!--Подвал сайта, блок footer -->
-        <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
+        <p class='footer__copyright'>&copy; 2023 Mesto Russia</p>
       </footer>
 
-      <div class="popup">
-        <!--Секция, блок popup -->
-        <div class="popup__container">
+      <!--Popup: Редактировать профиль-->
+      <div id='editProfile' class='popup popup_type_edit-profile'>
+        <div class='popup__container'>
           <button
-            class="popup__close-button button"
-            type="button"
-            title="Закрыть окно"
+            class='popup__close-button button'
+            type='button'
+            title='Закрыть окно'
           ></button>
           <form
-            name="popupContainer"
-            class="popup__form"
-            method="post"
-            action="action"
+            name='popupContainer'
+            class='popup__form'
+            method='post'
+            action='action'
           >
-            <p class="popup__title">Редактировать профиль</p>
+            <p class='popup__title'>Редактировать профиль</p>
             <input
-              class="popup__input popup__input_name"
-              id="inputName"
-              type="text"
-              name="name"
-              placeholder="Жак-Ив Кусто"
+              class='popup__input popup__input_name'
+              id='inputName'
+              type='text'
+              name='name'
+              placeholder='Жак-Ив Кусто'
             >
-           <input
-              class="popup__input popup__input_job"
-              id="inputJob"
-              type="text"
-              name="job"
-              placeholder="Исследователь океана"
+            <input
+              class='popup__input popup__input_job'
+              id='inputJob'
+              type='text'
+              name='job'
+              placeholder='Исследователь океана'
             >
             <button
-              class="popup__submit-button"
-              type="submit"
-              title="Сохранить изменения"
+              class='popup__submit-button'
+              type='submit'
+              title='Сохранить изменения'
             >
               Сохранить
             </button>
           </form>
         </div>
       </div>
+
+      <!--Popup: Добавить карточку-->
+      <div id='addCard' class='popup popup_type_add-card'>
+        <div class='popup__container'>
+          <button
+            class='popup__close-button'
+            type='button'
+            title='Закрыть окно'
+          ></button>
+          <form
+            name='popupContainer'
+            class='popup__form'
+            method='post'
+            action='action'
+          >
+            <p class='popup__title'>Новое место</p>
+            <input
+              class='popup__input popup__input_image_name'
+              id='nameCard'
+              type='text'
+              name='nameCard'
+              placeholder='Название'
+            >
+            <input
+              class='popup__input popup__input_image_link'
+              id='linkCard'
+              type='text'
+              name='linkCard'
+              placeholder='Cсылка на картинку'
+            >
+            <button class='popup__submit-button' type='submit' title='Создать'>
+              Создать
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Popup: Увеличенное изображение -->
+      <div id='openPicture' class='popup popup_type_image'>
+        <figure class='popup__image-container'>
+          <button
+            class='popup__close-button'
+            type='button'
+            aria-label='Закрыть окно'
+          ></button>
+          <img src='#' alt='Клик для увеличения' class='popup__image' >
+          <figcaption class='popup__image-caption'>#</figcaption>
+        </figure>
+      </div>
+
+      <!-- Шаблон для создания карточки -->
+      <template id='card'>
+        <li class='element'>
+          <img src='#' alt='Шаблон картинки' class='element__image' >
+          <div class='element__sign'>
+            <h2 class='element__title'>#</h2>
+            <button
+              class='element__delete-button'
+              type='button'
+              aria-label='Удалить карточку'
+            ></button>
+            <button
+              class='element__like-button'
+              type='button'
+              title='Поставить лайк'
+            ></button>
+          </div>
+        </li>
+      </template>
     </main>
-    <script src="./scripts/index.js"></script>
+    <script src='./scripts/index.js'></script>
   </body>
 </html>
