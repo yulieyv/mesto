@@ -8,7 +8,7 @@ const inputJob = formProfile.querySelector('.popup__input_job');
 const closeButtons = document.querySelectorAll('.popup__close-button');
 const editProfileButton = document.querySelector('.profile__edit-button'); 
 const itemListWrapper = document.querySelector('.elements__list');
-const template = document.querySelector('#card');
+const template = document.querySelector('#card').content.querySelector('.element');
 const popupCard = document.querySelector('.popup_type_add-card');
 const editCardButton = document.querySelector('.profile__add-button'); 
 const popupImage = document.querySelector('.popup_type_image');
@@ -38,6 +38,8 @@ formProfile.addEventListener('submit', handleProfileFormSubmit);
 // Открытие формы с новыми именем и профессией
 editProfileButton.addEventListener('click', handleProfileFormSubmit => {
   openPopup(popupProfile); 
+  inputName.value = profileName.textContent; 
+  inputJob.value = profileJob.textContent; 
 });
 
 //Закрытие попапа при нажатии на крестик
@@ -60,7 +62,7 @@ const handleDelete = (evt) => {
 
 //Функция создания оберток под карточки (+поставить лайк)
 function createNewCard(element) {
-  const newCard = template.content.cloneNode(true);
+  const newCard = template.cloneNode(true);
   const cardImage = newCard.querySelector('.element__image');
   const cardName = newCard.querySelector('.element__title');
   const cardButton = newCard.querySelector('.element__delete-button');
@@ -74,14 +76,18 @@ function createNewCard(element) {
 
   cardButton.addEventListener('click', handleDelete);
 
-  //Открытие увеличенного изображения карточки
-  cardImage.addEventListener('click', () => {
+  //Функция увеличения изображения карточки
+  const handleOpenFullImage = (element) => {
     openPopup(popupImage);
     popupZoomCaption.textContent = element.name;
     popupZoomImage.src = element.link;
     popupZoomImage.alt = element.name;
-  });
-   return newCard;
+  };
+  
+  //Открытие увеличенного изображения карточки
+  cardImage.addEventListener('click', handleOpenFullImage);
+
+  return newCard;
 };
 
 //Функция заполнения обертки карточки
@@ -95,13 +101,15 @@ initialCards.forEach((title) => {
 });
 
 //Добавление новой карточки из данных попапа
-popupCard.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  const title = {
+const handleSubmitFormNewCard = (evt) => {
+  evt.preventDefault(); 
+    const title = { 
     name: nameCard.value,
-    link: linkCard.value,
-  };
-  renderCard(itemListWrapper, title);
-  evt.target.reset();
-  closePopup(popupCard);
-})
+    link: linkCard.value, 
+  }; 
+  renderCard(itemListWrapper, title); 
+  evt.target.reset(); 
+  closePopup(popupCard); 
+};
+
+popupCard.addEventListener('submit', handleSubmitFormNewCard);
