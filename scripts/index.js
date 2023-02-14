@@ -85,7 +85,7 @@ function createNewCard(element) {
   };
   
   //Открытие увеличенного изображения карточки
-  cardImage.addEventListener('click', handleOpenFullImage);
+  cardImage.addEventListener('click', () => handleOpenFullImage(element));
 
   return newCard;
 };
