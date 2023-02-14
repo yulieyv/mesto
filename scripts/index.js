@@ -77,7 +77,7 @@ function createNewCard(element) {
   cardButton.addEventListener('click', handleDelete);
 
   //Функция увеличения изображения карточки
-  const handleOpenFullImage = (element) => {
+  const handleOpenFullImage = () => {
     openPopup(popupImage);
     popupZoomCaption.textContent = element.name;
     popupZoomImage.src = element.link;
@@ -85,7 +85,7 @@ function createNewCard(element) {
   };
   
   //Открытие увеличенного изображения карточки
-  cardImage.addEventListener('click', () => handleOpenFullImage(element));
+  cardImage.addEventListener('click', handleOpenFullImage);
 
   return newCard;
 };
