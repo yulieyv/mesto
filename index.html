@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang='ru'>
   <head>
-    <meta charset='UTF-8' >
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' >
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <meta
       name='description'
       content='Одностраничный сайт с возможностью добавления картинок и редактирования профиля в рамках курса Веб-разработчик от Яндекс Практикума'
-    >
-    <meta name='keywords' content='Картинки, профиль' >
-    <meta name='author' content='Ямалиева Юлия' >
-    <link rel='stylesheet' href='./pages/index.css' >
+   >
+    <meta name='keywords' content='Картинки, профиль'>
+    <meta name='author' content='Ямалиева Юлия'>
+    <link rel='stylesheet' href='./pages/index.css'>
     <title>Mesto Russia</title>
   </head>
 
@@ -20,7 +20,7 @@
         class='header__logo'
         src='./images/header-logo.svg'
         alt='Логотип с надписью Место'
-      >
+     >
     </header>
     <main class='content'>
       <section class='profile'>
@@ -30,7 +30,7 @@
             src='./images/photo-profile.jpg'
             alt='Фото профиля'
             class='profile__image'
-          >
+         >
           <div class='profile__info'>
             <h1 class='profile__name'>Жак-Ив Кусто</h1>
             <button
@@ -79,14 +79,22 @@
               type='text'
               name='name'
               placeholder='Имя'
-            >
+              required
+              minlength='2'
+              maxlength='40'
+           >
+            <span class='inputName-error popup__input-error'></span>
             <input
               class='popup__input popup__input_job'
               id='inputJob'
               type='text'
               name='job'
-              placeholder='Род деятельности'
-            >
+              placeholder='О себе'
+              required
+              minlength='2'
+              maxlength='200'
+           >
+            <span class='inputJob-error popup__input-error'></span>
             <button
               class='popup__submit-button'
               type='submit'
@@ -119,14 +127,21 @@
               type='text'
               name='nameCard'
               placeholder='Название'
-            >
+              required
+              minlength='2'
+              maxlength='30'
+           >
+            <span class='nameCard-error popup__input-error'></span>
             <input
               class='popup__input popup__input_image_link'
               id='linkCard'
-              type='text'
+              type='url'
               name='linkCard'
               placeholder='Cсылка на картинку'
-            >
+              required
+              pattern='https://.+'
+           >
+            <span class='linkCard-error popup__input-error'></span>
             <button class='popup__submit-button' type='submit' title='Создать'>
               Создать
             </button>
@@ -142,7 +157,7 @@
             type='button'
             aria-label='Закрыть окно'
           ></button>
-          <img src='#' alt='Клик для увеличения' class='popup__image' >
+          <img src='#' alt='Клик для увеличения' class='popup__image'>
           <figcaption class='popup__image-caption'>#</figcaption>
         </figure>
       </div>
@@ -150,7 +165,7 @@
       <!-- Шаблон для создания карточки -->
       <template id='card'>
         <li class='element'>
-          <img src='#' alt='Шаблон картинки' class='element__image' >
+          <img src='#' alt='Шаблон картинки' class='element__image'>
           <div class='element__sign'>
             <h2 class='element__title'>#</h2>
             <button
@@ -167,7 +182,8 @@
         </li>
       </template>
     </main>
-    <script src='./scripts/cards.js'></script>
-    <script src='./scripts/index.js'></script>
+    <script src='./scripts/cards.js' defer></script>
+    <script src='./scripts/validate.js' defer></script>
+    <script src='./scripts/index.js' defer></script>
   </body>
 </html>

@@ -1,28 +1,50 @@
 //Константы
+const popup = document.querySelectorAll('.popup');
 const popupProfile = document.querySelector('.popup_type_edit-profile');
+const saveProfileButton = popupProfile.querySelector('.popup__submit-button');
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__job');
-const formProfile = popupProfile.querySelector('.popup__container');
-const inputName = formProfile.querySelector('.popup__input_name');
-const inputJob = formProfile.querySelector('.popup__input_job'); 
+const inputName = popupProfile.querySelector('.popup__input_name');
+const inputJob = popupProfile.querySelector('.popup__input_job'); 
 const closeButtons = document.querySelectorAll('.popup__close-button');
 const editProfileButton = document.querySelector('.profile__edit-button'); 
 const itemListWrapper = document.querySelector('.elements__list');
 const template = document.querySelector('#card').content.querySelector('.element');
 const popupCard = document.querySelector('.popup_type_add-card');
+const popupCardForm = popupCard.querySelector('.popup__form');
+const saveCardButton = popupCard.querySelector('.popup__submit-button');
 const editCardButton = document.querySelector('.profile__add-button'); 
 const popupImage = document.querySelector('.popup_type_image');
 const popupZoomCaption = popupImage.querySelector('.popup__image-caption');
 const popupZoomImage = popupImage.querySelector('.popup__image');
 
+
+//Закрытие попапа через ESC
+const closeByEsc = (evt) => {
+  if (evt.key === 'Escape') {
+    const openPopup = document.querySelector('.popup_opened');
+    closePopup(openPopup);
+  };
+};
+
 //Открытие попапа
 const openPopup = (formElement) => {
   formElement.classList.add('popup_opened'); 
+  document.addEventListener('keydown', closeByEsc);
 };
 
 //Закрытие попапа
 const closePopup = (formElement) => {
   formElement.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeByEsc);
+};
+
+//Закрытие попапа на оверлей
+const closePopupByClick = (evt) => {
+  if (evt.target.classList.contains('popup')) {
+    const openPopup = document.querySelector('.popup_opened');
+    closePopup(openPopup);
+  };
 };
 
 //Сохранение изменений в полях формы и в профиле с закрытием окна
@@ -31,27 +53,36 @@ const handleProfileFormSubmit = (evt) => {
   profileName.textContent = inputName.value;
   profileJob.textContent = inputJob.value;
   closePopup(popupProfile);
+  closePopupByKey(popupProfile);
 };
 
-formProfile.addEventListener('submit', handleProfileFormSubmit); 
+popupProfile.addEventListener('submit', handleProfileFormSubmit); 
 
 // Открытие формы с новыми именем и профессией
-editProfileButton.addEventListener('click', handleProfileFormSubmit => {
+const handlerOpenPopupProfile = () => {
+  resetValidation();
   openPopup(popupProfile); 
   inputName.value = profileName.textContent; 
   inputJob.value = profileJob.textContent; 
-});
+  enableValidation(saveProfileButton);
+}
+
+editProfileButton.addEventListener('click', handlerOpenPopupProfile);
+
+popupProfile.addEventListener('mousedown', closePopupByClick);
 
 //Закрытие попапа при нажатии на крестик
 closeButtons.forEach((element) => {
   element.addEventListener('click', (evt) => {
     const formItem = evt.target.closest('.popup');
-    closePopup(formItem);
+    closePopup(formItem); 
   });
 }); 
 
 //Открытие попапа для создания карточек
 editCardButton.addEventListener('click', () => {
+  popupCardForm.reset();
+  resetValidation();
   openPopup(popupCard);
 });
 
@@ -61,7 +92,7 @@ const handleDelete = (evt) => {
 };
 
 //Функция создания оберток под карточки (+поставить лайк)
-function createNewCard(element) {
+const createNewCard = (element) => {
   const newCard = template.cloneNode(true);
   const cardImage = newCard.querySelector('.element__image');
   const cardName = newCard.querySelector('.element__title');
@@ -76,7 +107,7 @@ function createNewCard(element) {
 
   cardButton.addEventListener('click', handleDelete);
 
-  //Функция увеличения изображения карточки
+  //Увеличение изображения карточки
   const handleOpenFullImage = (element) => {
     openPopup(popupImage);
     popupZoomCaption.textContent = element.name;
@@ -86,6 +117,7 @@ function createNewCard(element) {
   
   //Открытие увеличенного изображения карточки
   cardImage.addEventListener('click', () => handleOpenFullImage(element));
+  popupImage.addEventListener('mousedown', closePopupByClick);
 
   return newCard;
 };
@@ -108,8 +140,11 @@ const handleSubmitFormNewCard = (evt) => {
     link: linkCard.value, 
   }; 
   renderCard(itemListWrapper, title); 
-  evt.target.reset(); 
+  disableSubmitButton(saveCardButton);
   closePopup(popupCard); 
+  evt.target.reset(); 
 };
 
 popupCard.addEventListener('submit', handleSubmitFormNewCard);
+
+popupCard.addEventListener('mousedown', closePopupByClick);

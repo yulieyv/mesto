@@ -10,7 +10,7 @@
   background-size: contain;
   border: 0;
   padding: 0;
-  margin-bottom: 8px;
+  margin: 0 -40px 8px 0;
   cursor: pointer;
   transition: opacity .3s ease;
 }
@@ -24,7 +24,6 @@
     width: 20px;
     height: 20px;
     top: 87px;
-    right: 0;
-    margin-bottom: 16px;
+    margin: 0 0 16px;
   }
 }

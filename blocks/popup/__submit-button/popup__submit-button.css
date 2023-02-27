@@ -4,6 +4,7 @@
   position: relative;
   border-radius: 2px;
   box-shadow: none;
+  margin: 15px 0 0;
   padding: 14px 125px;
   display: flex;
   align-items: center;
@@ -16,7 +17,6 @@
   font-size: 18px;
   line-height: 1.22;
   text-align: center;
-
   color: #FFFFFF;
   background-color: #000;
   cursor: pointer;
@@ -26,6 +26,14 @@
 .popup__submit-button:hover{
   opacity: 0.8;
 }
+
+.popup__submit-button:disabled {
+  background-color: #fff;
+  border: 1px solid #000;
+  color: #000;
+  opacity: .2;
+}
+
 @media screen and (max-width: 549px) {
   .popup__submit-button {
     width: 238px;
