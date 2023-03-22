@@ -9,7 +9,7 @@
 К проектной работе 4: [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
 К проектной работе 5: [Ссылка на макет в Figma](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1)
 К проектной работе 6: [Ссылка на макет в Figma](https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6?node-id=0%3A1)
-
+К проектной работе 6: отсутствует
 ### Ссылка на сайт:
 https://yulieyv.github.io/mesto/index.html
 
@@ -22,6 +22,8 @@ https://yulieyv.github.io/mesto/index.html
 - Flexbox
 - Grid
 - Валидация
+- ООП
+- Разбиение скрипта на модули
 
 ### Функционал:
 - возможность редактирования данных профиля: имя, о себе;
