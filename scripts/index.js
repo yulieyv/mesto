@@ -38,7 +38,7 @@ const validationSet = {
 };
 
 //Константы
-const popup = document.querySelectorAll('.popup');
+const popups = document.querySelectorAll('.popup');
 const popupProfile = document.querySelector('.popup_type_edit-profile');
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__job');
@@ -50,7 +50,10 @@ const popupCard = document.querySelector('.popup_type_add-card');
 const popupCardForm = popupCard.querySelector('.popup__form');
 const popupProfileForm = popupProfile.querySelector('.popup__form');
 const buttonEditCardForm = document.querySelector('.profile__add-button');
+const itemListWrapper = document.querySelector('.elements__list');
 const popupImage = document.querySelector('.popup_type_image');
+const popupZoomCaption = popupImage.querySelector('.popup__image-caption');
+const popupZoomImage = popupImage.querySelector('.popup__image');
 const popupCardInputName = document.querySelector('.popup__input_image_name');
 const popupCardInputLink = document.querySelector('.popup__input_image_link');
 
@@ -83,12 +86,11 @@ const closePopup = (formElement) => {
 };
 
 //Закрытие попапа на оверлей
-const closePopupByClick = (evt) => {
-  if (evt.target.classList.contains('popup')) {
-    const openPopup = document.querySelector('.popup_opened');
-    closePopup(openPopup);
-  }
-};
+popups.forEach((item) => {
+  item.addEventListener('click', (evt) => {
+    closePopup(evt.target);
+  });
+});
 
 //Сохранение изменений в полях формы и в профиле с закрытием окна
 const handleProfileFormSubmit = (evt) => {
@@ -119,37 +121,46 @@ buttonsClose.forEach((element) => {
   });
 });
 
+const handleCardClick = (name, link) => {
+  popupZoomCaption.textContent = name;
+  popupZoomImage.src = link;
+  popupZoomImage.alt = name;
+  openPopup(popupImage);
+};
+
 //Открытие попапа для создания карточек
 buttonEditCardForm.addEventListener('click', () => {
   popupCardForm.reset();
   validatorCardForm.resetValidation();
+  validatorCardForm.disableSubmitButton();
   openPopup(popupCard);
 });
 
+const renderCard = (title, url, template, zoomPopup) => {
+  const card = new Card(title, url, template, zoomPopup);
+  return card.createNewCard();
+};
+
 //Вывод карточек на экран из массива
 initialCards.forEach((item) => {
-  const cards = new Card(item.name, item.link, '.card');
-  cards.renderCard();
+  const cards = renderCard(item.name, item.link, '.card', handleCardClick);
+  itemListWrapper.prepend(cards);
 });
 
 //Добавление новой карточки из попапа
 const handleSubmitFormNewCard = (evt) => {
   evt.preventDefault();
-  const newCard = new Card(
+  const newCard = renderCard(
     popupCardInputName.value,
     popupCardInputLink.value,
-    '.card'
+    '.card',
+    handleCardClick
   );
-  newCard.renderCard();
+  itemListWrapper.prepend(newCard);
   closePopup(popupCard);
   evt.target.reset();
 };
 
 popupCard.addEventListener('submit', handleSubmitFormNewCard);
 
-//Cлушатель на кнопку закрытия модального окна
-popup.forEach((popupElement) => {
-  popupElement.addEventListener('mousedown', closePopupByClick);
-});
-
-export { openPopup, popupImage };
+//export { openPopup, popupImage };
