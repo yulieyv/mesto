@@ -19,8 +19,6 @@ export class Card {
     this._cardDeleteButton = this._cardElement.querySelector(
       '.element__delete-button'
     );
-    this._popupZoomCaption = document.querySelector('.popup__image-caption');
-    this._popupZoomImage = document.querySelector('.popup__image');
   }
 
   createNewCard() {
