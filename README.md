@@ -11,7 +11,7 @@
 К проектной работе 6: [Ссылка на макет в Figma](https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6?node-id=0%3A1)
 К проектной работе 6: отсутствует
 ### Ссылка на сайт:
-https://yulieyv.github.io/mesto/index.html
+https://yulieyv.github.io/mesto/src/index.html
 
 ### Технологии:
 - HTML 5

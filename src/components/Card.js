@@ -33,6 +33,7 @@ export class Card {
 
   _deleteCardElement = () => {
     this._cardElement.remove();
+    this._cardElement = null;
   };
 
   _handleLikeButton() {
