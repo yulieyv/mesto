@@ -23,7 +23,7 @@ export default class Popup {
   setEventListeners() {
     this._buttonClose.addEventListener('click', () => this.close());
     this._popup.addEventListener('click', () => this.close());
-    this._popup.childNodes[1].addEventListener('click', (evt) =>
+    this._popup.children[0].addEventListener('click', (evt) =>
       evt.stopPropagation()
     );
   }

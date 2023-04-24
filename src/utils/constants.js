@@ -34,22 +34,25 @@ export const validationSet = {
   errorClass: 'popup__input-error_active',
 };
 
-
-//const popups = document.querySelectorAll('.popup');
 export const popupProfile = document.querySelector('.popup_type_edit-profile');
 export const profileName = document.querySelector('.profile__name');
 export const profileJob = document.querySelector('.profile__job');
 export const inputName = popupProfile.querySelector('.popup__input_name');
 export const inputJob = popupProfile.querySelector('.popup__input_job');
-//const buttonsClose = document.querySelectorAll('.popup__close-button');
 export const buttonEditProfileForm = document.querySelector('.profile__edit-button');
 export const popupCard = document.querySelector('.popup_type_add-card');
 export const popupCardForm = popupCard.querySelector('.popup__form');
+export const popupAvatarForm = document.querySelector('.popup_type_avatar').querySelector('.popup__form');
 export const popupProfileForm = popupProfile.querySelector('.popup__form');
 export const buttonEditCardForm = document.querySelector('.profile__add-button');
-//const itemListWrapper = document.querySelector('.elements__list');
-//const popupImage = document.querySelector('.popup_type_image');
-//const popupZoomCaption = popupImage.querySelector('.popup__image-caption');
-//const popupZoomImage = popupImage.querySelector('.popup__image');
-//const popupCardInputName = document.querySelector('.popup__input_image_name');
-//const popupCardInputLink = document.querySelector('.popup__input_image_link');
+export const profileNameSelector = '.profile__name';
+export const profileJobSelector = '.profile__job';
+export const profileAvatarSelector = '.profile-image';
+export const buttonAddAvatar = document.querySelector('.profile__avatar-button');
+export const popupEditSelector = '.popup_type_edit-profile';
+export const sectionSelector = '.elements__list';
+export const popupAddSelector = '#addCard';
+export const popupImageSelector = '.popup_type_image';
+export const popupConfirmSelector = '.popup_type_confirm';
+export const cardTemplateSelector = '#card';
+export const popupAvatarSelector = '#addAvatar';
