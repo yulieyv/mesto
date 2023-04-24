@@ -1,5 +1,5 @@
 import './index.css';
-import Api from '../components/API.js';
+import Api from '../components/Api.js';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
@@ -134,7 +134,7 @@ newPopupWithImage.setEventListeners();
 
 // popupWithConfirmation
 const newPopupConfirm = new PopupWithConfirm(popupConfirmSelector);
-newPopupConfirm.setEventListener();
+//newPopupConfirm.setEventListener();
 
 //создание карточек
 function generateCard(data) {
@@ -162,7 +162,7 @@ function generateCard(data) {
     handleLikeClick: () => {
       if (card.checkUserLike()) {
         api
-          .setLike(data._id)
+          .addLike(data._id)
           .then((data) => {
             card.updateLikeCount(data);
             card.toggleLikes();

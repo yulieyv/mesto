@@ -21,10 +21,6 @@ export default class Api {
       headers: this._headers,
     })
   }
-  
-  getPageData() {
-    return Promise.all([this.getInitialCards(), this.getUserInfo()]);
-  }
 
   patchUserInfo({ name, job }) {
     return this._requestUrl(`${this.baseUrl}/users/me`, {
@@ -57,13 +53,13 @@ export default class Api {
     
   }
   
-  addNewCard({ name, link }) {
+  addNewCard(data) {
     return this._requestUrl(`${this.baseUrl}/cards`, {
       method: "POST",
       headers: this.headers,
       body: JSON.stringify({
-        name: name,
-        link: link
+        name: data.name,
+        link: data.link
       })
     });
   }
