@@ -7,7 +7,7 @@ export default class PopupWithImage extends Popup {
     this._popupZoomImage = this._popup.querySelector('.popup__image');
   }
 
-  open({ name, link }) {
+  open({name, link}) {
     super.open();
     this._popupZoomCaption.textContent = name;
     this._popupZoomImage.src = link;

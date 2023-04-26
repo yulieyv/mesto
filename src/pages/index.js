@@ -5,11 +5,10 @@ import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
-import PopupWithConfirm from '../components/PopupWithCofirm';
+import PopupWithConfirmation from '../components/PopupWithCofirmation';
 import UserInfo from '../components/UserInfo.js';
 
 import {
-  //initialCards,
   validationSet,
   buttonEditCardForm,
   buttonEditProfileForm,
@@ -23,26 +22,35 @@ import {
   sectionSelector,
   popupAddSelector,
   popupImageSelector,
-  popupConfirmSelector,
+  popupConfirmationSelector,
   popupAvatarSelector,
   cardTemplateSelector,
   popupEditSelector
 } from '../utils/constants.js';
 
-export const api = new Api({
+
+// Подключить API
+const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-64',
   headers: {
     authorization: 'e761b675-104a-46b8-8d1b-b0499c848400',
-    'Content-Type': 'application/json',
+    'Content-Type': 'application/json'
   },
 });
 
+
+//Получить данные c сервера или вывести сообщение об ошибке
 Promise.all([api.getUserInfo(), api.getInitialCards()])
-  .then(([userData, initialCards]) => {
-    newUser.setUserInfo(userData);
-    section.renderItems(initialCards);
+  .then(([me, cards]) => {
+    userId = me._id;
+    userInfo.setUserInfo(me);
+    section.renderItems(cards);
   })
-  .catch(console.log);
+  .catch((err) => console.log(err))
+  .finally(() => {})
+
+let userId;
+  
 
 // Валидация форм
 const validatorProfileForm = new FormValidator(validationSet, popupProfileForm);
@@ -59,24 +67,27 @@ const section = new Section(
   sectionSelector
 );
 
-// profile
+// Изменение данных профиля
 const userInfo = new UserInfo({
   name: profileNameSelector,
   job: profileJobSelector,
-  avatar: profileAvatarSelector,
+  avatar: profileAvatarSelector
 });
 
-// popup Avatar
-const popupAvatar = new PopupWithForm(popupAvatarSelector, (formData) => {
+// Изменение аватара профиля
+const popupAvatar = new PopupWithForm(popupAvatarSelector, 
+  (formData) => {
   popupAvatar.renderLoading(true);
   api
-    .patchUserAvatar(formData)
+    .patchUserAvatar({avatar: formData.url})
     .then((data) => {
-      userInfo.setUserInfo(data);
+      userInfo.setUserAvatar( {newAvatar: data.avatar});
+      popupAvatar.close();
     })
     .catch((err) => console.log(err))
     .finally(() => popupAvatar.renderLoading(false));
 });
+
 popupAvatar.setEventListeners();
 buttonAddAvatar.addEventListener('click', () => {
   validatorAvatarForm.resetValidation();
@@ -84,15 +95,16 @@ buttonAddAvatar.addEventListener('click', () => {
   popupAvatar.open();
 });
 
-// popup Edit
+// Изменение имени и описания профиля
 const popupWithProfileForm = new PopupWithForm(
   popupEditSelector,
   (formData) => {
     popupWithProfileForm.renderLoading(true);
     api
-      .patchUserInfo(formData)
+      .patchUserInfo({name: formData.name, about: formData.job})
       .then((data) => {
-        userInfo.setUserInfo(data);
+        userInfo.changeUserInfo({name: data.name, about: data.about});
+        popupWithProfileForm.close();
       })
       .catch((err) => console.log(err))
       .finally(() => popupWithProfileForm.renderLoading(false));
@@ -107,14 +119,15 @@ buttonEditProfileForm.addEventListener('click', () => {
   popupWithProfileForm.open();
 });
 
-// popup Card
-
+// Создание новой карточки
 const popupWithCardForm = new PopupWithForm(popupAddSelector, (formData) => {
   popupWithCardForm.renderLoading(true);
+  console.log(formData);
   api
-    .addNewCard(formData)
+    .addNewCard({name: formData.nameCard, link: formData.linkCard})
     .then((data) => {
       section.addItem(data);
+      popupWithCardForm.close();
     })
     .catch((err) => console.log(err))
     .finally(() => popupWithCardForm.renderLoading(false));
@@ -129,59 +142,56 @@ buttonEditCardForm.addEventListener('click', () => {
 });
 
 // popupWithImage
-const newPopupWithImage = new PopupWithImage(popupImageSelector);
-newPopupWithImage.setEventListeners();
+const popupWithImage = new PopupWithImage(popupImageSelector);
+popupWithImage.setEventListeners();
 
 // popupWithConfirmation
-const newPopupConfirm = new PopupWithConfirm(popupConfirmSelector);
-//newPopupConfirm.setEventListener();
+const popupConfirmation= new PopupWithConfirmation(popupConfirmationSelector);
+popupConfirmation.setEventListener();
 
-//создание карточек
+//Создание карточек при загрузке страницы
 function generateCard(data) {
-  const card = new Card({
+  const card = new Card(
     data,
     userId,
     cardTemplateSelector,
-    handleCardClick: () => {
-      newPopupWithImage.open(data);
-    },
-    handleRTrashClick: () => {
-      newPopupConfirm.setConfirm(() => {
-        newPopupConfirm.renderLoading(true);
+    () => popupWithImage.open(data),
+    () => {
+      popupConfirmation.setConfirmation(() => {
+        popupConfirmation.renderLoading(true);
         api
-          .deleteCard(cardId)
+          .deleteCard(data._id)
           .then(() => {
-            card.remove();
-            newPopupConfirm.close();
+            card.deleteCard();
+            popupConfirmation.close();
           })
           .catch((err) => console.error(err))
-          .finally(() => newPopupConfirm.renderLoading(false));
+          .finally(() => popupConfirmation.renderLoading(false));
       });
-      newPopupConfirm.open();
+      popupConfirmation.open();
     },
-    handleLikeClick: () => {
-      if (card.checkUserLike()) {
+    () => {
+      if (!card.checkUserLike()) {
         api
-          .addLike(data._id)
-          .then((data) => {
-            card.updateLikeCount(data);
-            card.toggleLikes();
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        .addLike(data._id)
+        .then((data) => {
+          card.updateLikeCount(data.likes);
+          card.toggleLikes()
+        })
+        .catch((err) => {
+          console.log(err);
+        });
       } else {
         api
-          .deleteLike(data._id)
-          .then((data) => {
-            card.updateLikeCount(data);
-            card.toggleLikes();
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        .deleteLike(data._id)
+        .then((data) => {
+          card.updateLikeCount(data.likes);
+          card.toggleLikes();
+        })
+        .catch((err) => {
+          console.log(err);
+        })
       }
-    },
-  });
+  })
   return card.createNewCard();
 }

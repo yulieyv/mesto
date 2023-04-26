@@ -34,25 +34,31 @@ export const validationSet = {
   errorClass: 'popup__input-error_active',
 };
 
-export const popupProfile = document.querySelector('.popup_type_edit-profile');
 export const profileName = document.querySelector('.profile__name');
 export const profileJob = document.querySelector('.profile__job');
-export const inputName = popupProfile.querySelector('.popup__input_name');
-export const inputJob = popupProfile.querySelector('.popup__input_job');
+
+//инпуты
+export const inputName = document.querySelector('.popup_type_edit-profile').querySelector('.popup__input_name');
+export const inputJob = document.querySelector('.popup_type_edit-profile').querySelector('.popup__input_job');
+
+//кнопки
 export const buttonEditProfileForm = document.querySelector('.profile__edit-button');
-export const popupCard = document.querySelector('.popup_type_add-card');
-export const popupCardForm = popupCard.querySelector('.popup__form');
-export const popupAvatarForm = document.querySelector('.popup_type_avatar').querySelector('.popup__form');
-export const popupProfileForm = popupProfile.querySelector('.popup__form');
 export const buttonEditCardForm = document.querySelector('.profile__add-button');
+export const buttonAddAvatar = document.querySelector('.profile__avatar-button');
+
+//формы
+export const popupCardForm = document.querySelector('.popup_type_add-card').querySelector('.popup__form');
+export const popupAvatarForm = document.querySelector('.popup_type_avatar').querySelector('.popup__form');
+export const popupProfileForm = document.querySelector('.popup_type_edit-profile').querySelector('.popup__form');
+
+//селекторы
 export const profileNameSelector = '.profile__name';
 export const profileJobSelector = '.profile__job';
-export const profileAvatarSelector = '.profile-image';
-export const buttonAddAvatar = document.querySelector('.profile__avatar-button');
-export const popupEditSelector = '.popup_type_edit-profile';
-export const sectionSelector = '.elements__list';
+export const profileAvatarSelector = '.profile__image';
+export const popupEditSelector = '#editProfile';
 export const popupAddSelector = '#addCard';
 export const popupImageSelector = '.popup_type_image';
-export const popupConfirmSelector = '.popup_type_confirm';
-export const cardTemplateSelector = '#card';
+export const popupConfirmationSelector = '.popup_type_confirm';
 export const popupAvatarSelector = '#addAvatar';
+export const sectionSelector = '.elements__list';
+export const cardTemplateSelector = '#card';
