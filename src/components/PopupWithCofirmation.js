@@ -8,7 +8,7 @@ export default class PopupWithConfirmation extends Popup {
   }
 
   renderLoading(isLoading) {
-    if(isLoading) {
+    if (isLoading) {
       this._buttonSubmit.textContent = 'Удаление...';
     } else {
       this._buttonSubmit.textContent = 'Да';
@@ -16,11 +16,14 @@ export default class PopupWithConfirmation extends Popup {
   }
 
   setConfirmation(callback) {
-    this._submit = callback;
-  } 
+    this._handleConfirmationCallback = callback;
+  }
 
-  setEventListener() {
-    this._buttonSubmit.addEventListener('click', () => this._submit());
-    super.setEventListener();
+  setEventListeners() {
+    super.setEventListeners();
+    this._buttonSubmit.addEventListener('click', (evt) => {
+      evt.preventDefault();
+      this._handleConfirmationCallback();
+    });
   }
 }

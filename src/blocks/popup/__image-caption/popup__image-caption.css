@@ -4,9 +4,9 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 15px;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-top: 10px;
-  margin-left: 40px;
+  align-self: start;
 }
 
 @media screen and (max-width: 549px) {

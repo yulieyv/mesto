@@ -1,9 +1,10 @@
 .profile__avatar-button {
   position: absolute;
-  width: 125px;
-  height: 125px;
+  width: 120px;
+  height: 120px;
   z-index: 0;
   border-radius: 50%;
+  border: 0;
   padding: 0;
   background-image: url('../../../images/avatar-edit.png');
   background-repeat: no-repeat;
@@ -11,8 +12,7 @@
   background-color: rgba(0, 0, 0, 0.8);
   background-size: 26px;
   opacity: 0;
-  transition:  opacity 0.2s ease-in;
-
+  transition: opacity 0.2s ease-in;
 }
 .profile__avatar-button:hover {
   cursor: pointer;
@@ -21,12 +21,12 @@
 
 @media screen and (max-width: 800px) {
   .profile__avatar-button {
-    top: 142px;
+    top: 141px;
   }
 }
 
 @media screen and (max-width: 424px) {
-  .profile__avatar-button  {
-    top: 125px;
+  .profile__avatar-button {
+    top: 124px;
   }
-} 
+}

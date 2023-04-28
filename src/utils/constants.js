@@ -1,4 +1,4 @@
-export const initialCards = [
+/*export const initialCards = [
   {
     name: 'Лилии',
     link: 'https://images.unsplash.com/photo-1675657149146-a4e4e9621bcf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
@@ -23,7 +23,7 @@ export const initialCards = [
     name: 'Зеваем',
     link: 'https://images.unsplash.com/photo-1675011571319-4f0a321b78ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
   },
-];
+];*/
 
 export const validationSet = {
   formSelector: '.popup__form',
@@ -38,18 +38,34 @@ export const profileName = document.querySelector('.profile__name');
 export const profileJob = document.querySelector('.profile__job');
 
 //инпуты
-export const inputName = document.querySelector('.popup_type_edit-profile').querySelector('.popup__input_name');
-export const inputJob = document.querySelector('.popup_type_edit-profile').querySelector('.popup__input_job');
+export const inputName = document
+  .querySelector('.popup_type_edit-profile')
+  .querySelector('.popup__input_name');
+export const inputJob = document
+  .querySelector('.popup_type_edit-profile')
+  .querySelector('.popup__input_job');
 
 //кнопки
-export const buttonEditProfileForm = document.querySelector('.profile__edit-button');
-export const buttonEditCardForm = document.querySelector('.profile__add-button');
-export const buttonAddAvatar = document.querySelector('.profile__avatar-button');
+export const buttonEditProfileForm = document.querySelector(
+  '.profile__edit-button'
+);
+export const buttonEditCardForm = document.querySelector(
+  '.profile__add-button'
+);
+export const buttonAddAvatar = document.querySelector(
+  '.profile__avatar-button'
+);
 
 //формы
-export const popupCardForm = document.querySelector('.popup_type_add-card').querySelector('.popup__form');
-export const popupAvatarForm = document.querySelector('.popup_type_avatar').querySelector('.popup__form');
-export const popupProfileForm = document.querySelector('.popup_type_edit-profile').querySelector('.popup__form');
+export const popupCardForm = document
+  .querySelector('.popup_type_add-card')
+  .querySelector('.popup__form');
+export const popupAvatarForm = document
+  .querySelector('.popup_type_avatar')
+  .querySelector('.popup__form');
+export const popupProfileForm = document
+  .querySelector('.popup_type_edit-profile')
+  .querySelector('.popup__form');
 
 //селекторы
 export const profileNameSelector = '.profile__name';
